@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "{wallpaper}"
+let background = "{background}"
+let foreground = "{foreground}"
+let cursor     = "{cursor}"
+
+" Colors
+let color0  = "{color8}"
+let color1  = "{color9}"
+let color2  = "{color13}"
+let color3  = "{color13}"
+let color4  = "{color13}"
+let color5  = "{color13}"
+let color6  = "{color14}"
+let color7  = "{color11}"
+let color8  = "{color11}"
+let color9  = "{color11}"
+let color10 = "{color12}"
+let color11 = "{color12}"
+let color12 = "{color12}"
+let color13 = "{color13}"
+let color14 = "{color14}"
+let color15 = "{color15}"
