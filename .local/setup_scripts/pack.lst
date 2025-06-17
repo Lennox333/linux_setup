@@ -5,6 +5,8 @@ nvim
 swww
 cliphist
 fcitx5
+fcitx5-configtool
+fcitx5-unikey
 flatpak
 firefox
 btop
@@ -43,3 +45,4 @@ entr
 gamemode
 tumbler
 lib32-gamemode
+
