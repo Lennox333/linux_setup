@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ "$1" = "off" ]; then
+    # Custom command to turn off the monitor (example using xset)
+    ddcutil setvcp D6 04 --noverify
+    exit 0
+fi
+
+if [ "$1" = "b" ] && [ -n "$2" ]; then
+    ddcutil setvcp 10 "$2"
+    exit 0
+fi
+
+echo "Usage: $0 b <brightness_value> | off"
+echo "Brightness value should be between 0 and 100."
+exit 1
