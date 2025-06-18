@@ -11,3 +11,8 @@ flatpak install org.freedesktop.Platform.VulkanLayer.MangoHud
 flatpak install org.freedesktop.Platform.VulkanLayer.gamescope
 
 flatpak override --user io.github.radiolamp.mangojuice --filesystem=~/.config/MangoHud/MangoHud.conf
+
+
+
+flatpak install flathub it.mijorus.gearlever
+flatpak install flathub org.kde.krita
