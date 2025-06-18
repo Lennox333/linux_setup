@@ -23,7 +23,9 @@ if [ "$HYPRGAMEMODE" = 1 ]; then
         keyword layerrule noanim,rofi
         "
         hyprctl 'keyword windowrulev2 opaque,class:(.*)' # ensure all windows are opaque
+        # powerprofilesctl set performance
         exit
 else
         hyprctl reload config-only -q
+        powerprofilesctl set power-saver
 fi
