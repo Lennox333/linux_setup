@@ -127,5 +127,5 @@ source $ZSH/oh-my-zsh.sh
 alias v='nvim'
 alias su='sudo'
 alias suv='sudo nvim'
-alias ff='fastfetch'
+alias ff='random_fastfetch.sh'
 
