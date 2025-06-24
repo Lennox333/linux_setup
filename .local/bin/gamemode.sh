@@ -27,5 +27,5 @@ if [ "$HYPRGAMEMODE" = 1 ]; then
         exit
 else
         hyprctl reload config-only -q
-        powerprofilesctl set power-saver
+        # powerprofilesctl set power-saver
 fi

@@ -28,7 +28,7 @@
 	<name>Set as wall</name>
 	<submenu></submenu>
 	<unique-id>1747662686548660-1</unique-id>
-	<command>wall.sh img %f</command>
+	<command>wall.sh %f</command>
 	<description></description>
 	<range>*</range>
 	<patterns>*.jpg;*.png;*.jpeg</patterns>
