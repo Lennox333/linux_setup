@@ -226,10 +226,10 @@
 
 gradient = 1
 gradient_count = 4
-gradient_color_1 = '#574267'
-gradient_color_2 = '#B24D7C'
-gradient_color_3 = '#C6A5D2'
-gradient_color_4 = '#DC75A3'
+gradient_color_1 = '#2F2426'
+gradient_color_2 = '#9B111D'
+gradient_color_3 = '#BC8782'
+gradient_color_4 = '#F0D9D0'
 
 
 [smoothing]
