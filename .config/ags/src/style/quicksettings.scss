@@ -1,0 +1,259 @@
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    margin-left: 9rem;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    margin-right: 5rem;
+  }
+
+  100% {
+    opacity: 1;
+    margin-left: unset;
+  }
+}
+
+
+@keyframes fadeOutSlide {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    margin-right: 9rem;
+  }
+}
+
+#quicksettings {
+  .control-pannel {
+    background: $background;
+    border: $border;
+    border-radius: $rounded-lg;
+    border: 2px solid $color12;
+  }
+
+  #mpris-player {
+    border: $border;
+    border-radius: $rounded-lg;
+
+    .album-art {
+      border-radius: $border-radius;
+    }
+
+    trough {
+      background-color: rgba($color1, 0.1);
+    }
+  }
+
+  .qs-buttons {
+    button {
+      border-radius: $rounded-lg;
+      background-color: transparentize($color1, 0.7);
+      min-height: 38px;
+      min-width: 8rem;
+      color: $color14;
+      padding: 0 1.8rem 0 1.8rem;
+
+      &:hover {
+        transition-property: color, background-color, border-color,
+          text-decoration-color, fill, stroke;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+        background-color: $color0;
+      }
+    }
+
+    .recording {
+      background: $color4;
+
+      &:hover {
+        background: $color4;
+      }
+    }
+
+    .active {
+      background-color: $color3;
+      color: $color0;
+
+      &:hover {
+        background: $color3;
+        color: $color0;
+      }
+    }
+  }
+
+  .sysfetch {
+    background: $background;
+    border-radius: $border-radius;
+    padding: 8px;
+    color: $color1;
+
+    .icon {
+      padding-right: 2px;
+    }
+
+    .user .icon {
+      color: $color7;
+    }
+
+    .host .icon {
+      color: $color6;
+    }
+
+    .distro .icon {
+      color: $color5;
+    }
+
+    .kernel .icon {
+      color: $color11;
+    }
+
+    .uptime .icon {
+      color: $color10;
+    }
+  }
+
+  .profile {
+    .ascii-avatar {
+      background: transparentize($color3, 0.8);
+      border-radius: $rounded-lg;
+      padding: 20px;
+
+      label {
+        background: $background;
+        color: floralwhite;
+        font-size: 10px;
+        font-family: monospace;
+      }
+    }
+
+    .buttons-container {
+      button {
+        background: transparentize($color1, 0.7);
+        color: $color14;
+        min-height: 26px;
+
+        &:hover {
+          background: transparentize($color1, 0.8);
+        }
+      }
+    }
+
+    .options {
+      background: $background;
+    }
+
+    .day-progress {
+      background: transparentize($color1, 0.7);
+      padding: 6px;
+      border-radius: 6px;
+      color: $color14;
+    }
+
+    levelbar trough block.empty {
+      background: transparentize($color1, 0.8);
+    }
+  }
+}
+
+@keyframes popSize {
+  0% {
+    font-size: 30px;
+  }
+
+  20% {
+    font-size: 40px;
+  }
+  80% {
+    font-size: 40px;
+  }
+
+  100% {
+    font-size: 30px;
+  }
+}
+
+.power-profile {
+  .container {
+    background: transparentize($color1, 0.7);
+
+    &:hover {
+      .power-icon-current:not(.moveleft):not(.spawnright) {
+        font-size: 40px;
+        animation: popSize 0.5s linear forwards;
+
+      }
+    }
+  }
+}
+
+
+
+.power-icon-current {
+  min-height: 60px;
+  font-size: 30px;
+  margin-left: 0px;
+  color: $color14;
+
+}
+
+.power-icon-current.moveleft {
+  animation: fadeOutSlide 0.3s ease forwards;
+
+}
+
+.power-icon-current.spawnright {
+  animation: fadeInSlide 0.3s ease forwards;
+}
+
+
+
+.calendar {
+  .container {
+    background: transparentize($color1, 0.8);
+    border: 2px solid $background;
+    border-radius: 8px;
+  }
+
+  .date-widget {
+    label {
+      color: $color14;
+    }
+
+    .separator {
+      color: $color6;
+    }
+  }
+
+  calendar {
+    all: unset;
+    color: $color12;
+    font-size: 1.2rem;
+    padding-top: 4px;
+
+    &.header {
+      border: none;
+    }
+
+    &.highlight {
+      background-color: transparent;
+      color: $color13;
+    }
+
+    &:selected {
+      background-color: transparent;
+      border-radius: 8px;
+      color: $color14;
+    }
+
+    &:indeterminate {
+      color: transparentize($color1, 0.6);
+    }
+  }
+}

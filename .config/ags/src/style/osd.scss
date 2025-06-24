@@ -1,0 +1,51 @@
+#osd {
+  background-color: transparent;
+  color: $color13;
+  .osd-bar-container {
+    // min-height: 16rem;
+    min-width: 16rem;
+  }
+
+
+  .osd-bar {
+    min-width: 40px;
+    background-color: $background;
+    border-radius: 10px;
+    padding: 6px 6px 0px 2px;
+    margin-right: 20px;
+    border: 2px solid;
+
+    // border-color: $color12;
+  }
+
+  .osd-icon {
+    font-size: 20px;
+    margin: 6px 6px 10px 0;
+  }
+
+  levelbar {
+    trough {
+      border-radius: 6px;
+      margin-top: 10px;
+      margin-bottom: 16px;
+
+      .filled.low {
+        background-color: $color11;
+      }
+
+      .filled.high {
+        background-color: $color12;
+      }
+
+      .filled.full {
+        background-color: $color13;
+      }
+
+      progress,
+      highlight {
+        min-width: 30px;
+        border-radius: 6px;
+      }
+    }
+  }
+}
