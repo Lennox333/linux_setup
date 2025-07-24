@@ -1,4 +1,4 @@
-import { Variable, bind } from "astal";
+import { Variable, bind, exec } from "astal";
 import { App, Astal, Gtk } from "astal/gtk3";
 import { bash } from "~/lib/utils";
 import { options } from "~/options";
@@ -96,7 +96,7 @@ const Walls = () => {
             walls.map(Image)
           ) : (
             <Fallback icon="org.gnome.Shotwell" label="No wallpapers found" />
-          ),
+          )
         )}
       </box>
     </scrollable>
@@ -134,6 +134,16 @@ const Footer = () => {
   );
 };
 
+const custompath = "/home/ln607/Wallpapers/test/";
+const wallpaperss = Variable(
+  exec(
+    `find -L "${custompath}" -iname "*.thumb"
+`
+  )
+    .split("\n")
+    .filter((i) => i !== "")
+);
+
 export default function WallPicker() {
   const { TOP, RIGHT, LEFT, BOTTOM } = Astal.WindowAnchor;
   return (
@@ -144,14 +154,33 @@ export default function WallPicker() {
       application={App}
     >
       <box
-        valign={Gtk.Align.START}
+        // valign={Gtk.Align.START}
+        // widthRequest={380}
+
         vertical
-        css="padding: 8px; padding-top: 4px;"
-        spacing={8}
+        css="padding: 8px; padding-top: 4px; background:blue;"
+        // spacing={8}
+        child={
+          <box
+
+            widthRequest={380}
+            heightRequest={200} // ← required!
+
+            css={`
+              background: url("/home/ln607/Wallpapers/Red/burning_cherry.jpeg");
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+            `}
+          />
+        }
       >
-        <Walls />
-        <Separator />
-        <Footer />
+        {/* <button onClick={() => { }>
+          Refresh
+        </button> */}
+        {/* <Walls /> */}
+        {/* <Separator />
+        <Footer /> */}
       </box>
     </window>
   );

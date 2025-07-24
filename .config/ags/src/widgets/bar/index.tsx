@@ -31,12 +31,12 @@ const CenterModules = (
 
 const RightModules = (
   <box className="right" spacing={8} hexpand halign={Gtk.Align.END}>
-    <box className="media-container">
+    <box className="media">
       <Mpris />
     </box>
 
     {/* <Network /> */}
-    {/* <QuickAccessButton /> */}
+    <QuickAccessButton />
     <box className="others" spacing={8}>
       {/* <Network /> */}
       <Audio />

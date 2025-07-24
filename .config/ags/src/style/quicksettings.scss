@@ -1,6 +1,9 @@
+@import "./mixines/transition.scss";
+
 @keyframes fadeInSlide {
   0% {
     opacity: 0;
+    margin: unset;
     margin-left: 9rem;
   }
 
@@ -8,12 +11,13 @@
     opacity: 1;
   }
 
-  80% {
+  40% {
+    margin: unset;
     margin-right: 5rem;
   }
 
   100% {
-    opacity: 1;
+    // opacity: 1;
     margin-left: unset;
   }
 }
@@ -24,14 +28,20 @@
     opacity: 1;
   }
 
+  80% {
+    opacity: 1;
+  }
+
   100% {
     opacity: 0;
+    margin: unset;
     margin-right: 9rem;
   }
 }
 
 #quicksettings {
   .control-pannel {
+
     background: $background;
     border: $border;
     border-radius: $rounded-lg;
@@ -54,10 +64,10 @@
   .qs-buttons {
     button {
       border-radius: $rounded-lg;
-      background-color: transparentize($color1, 0.7);
+      background-color: transparentize($color1, 0.8);
       min-height: 38px;
       min-width: 8rem;
-      color: $color14;
+      color: $color16;
       padding: 0 1.8rem 0 1.8rem;
 
       &:hover {
@@ -136,7 +146,7 @@
     .buttons-container {
       button {
         background: transparentize($color1, 0.7);
-        color: $color14;
+        color: $color16;
         min-height: 26px;
 
         &:hover {
@@ -153,7 +163,7 @@
       background: transparentize($color1, 0.7);
       padding: 6px;
       border-radius: 6px;
-      color: $color14;
+      color: $color16;
     }
 
     levelbar trough block.empty {
@@ -170,6 +180,7 @@
   20% {
     font-size: 40px;
   }
+
   80% {
     font-size: 40px;
   }
@@ -180,12 +191,18 @@
 }
 
 .power-profile {
+  // padding: 6px;
+  background: transparentize($color1, 0.7);
+  border-radius: $rounded-md;
+
   .container {
     background: transparentize($color1, 0.7);
+    margin: 6px;
+    padding: unset;
 
     &:hover {
       .power-icon-current:not(.moveleft):not(.spawnright) {
-        font-size: 40px;
+        // font-size: 40px;
         animation: popSize 0.5s linear forwards;
 
       }
@@ -196,34 +213,57 @@
 
 
 .power-icon-current {
-  min-height: 60px;
+  min-height: 53px;
+  padding: unset;
   font-size: 30px;
-  margin-left: 0px;
-  color: $color14;
+  // margin-left: 0px;
+  margin: unset;
+  color: $color16;
 
 }
 
 .power-icon-current.moveleft {
-  animation: fadeOutSlide 0.3s ease forwards;
+  animation: fadeOutSlide 0.2s ease forwards;
 
 }
 
 .power-icon-current.spawnright {
   animation: fadeInSlide 0.3s ease forwards;
+  // transition: 1s linear;
 }
 
+.brightness {
+  background: transparentize($color1, 0.7);
+  border-radius: $rounded-md;
+  padding: 5px 5px;
 
+  button {
+    min-height: 53px;
+    background: transparentize($color1, 0.7);
+
+    &:hover label {
+      animation: popSize 0.5s linear forwards;
+    }
+  }
+
+  button label {
+    border-radius: 6px;
+    font-size: 30px;
+    color: $color16;
+  }
+}
 
 .calendar {
   .container {
     background: transparentize($color1, 0.8);
     border: 2px solid $background;
     border-radius: 8px;
+
   }
 
   .date-widget {
     label {
-      color: $color14;
+      color: $color16;
     }
 
     .separator {
@@ -249,11 +289,30 @@
     &:selected {
       background-color: transparent;
       border-radius: 8px;
-      color: $color14;
+      color: $color16;
     }
 
     &:indeterminate {
-      color: transparentize($color1, 0.6);
+      color: transparentize($color12, 0.5);
     }
   }
+}
+
+.control-pannel,
+#mpris-player,
+.qs-buttons button,
+.sysfetch,
+.ascii-avatar,
+.profile label,
+.buttons-container button,
+.options,
+.day-progress,
+.power-profile .container,
+.power-icon-current,
+.calendar .container,
+.date-widget label,
+.date-widget .separator,
+.brightness,
+.calendar calendar {
+  @include transition-color;
 }

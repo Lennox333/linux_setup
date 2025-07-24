@@ -21,7 +21,7 @@ export default function Mpris() {
 
   return (
     <eventbox
-      className="media"
+      className="media-container"
       visible={bind(mpris, "players").as((p) => p.length > 0)}
     >
       {bind(mpris, "players").as((players) => {

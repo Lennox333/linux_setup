@@ -1,6 +1,7 @@
 #wall-picker {
-  background: transparentize($background, 0.6);
+  background: transparentize(red, 0.6);
 
+  
   &>box {
     background: $background;
   }

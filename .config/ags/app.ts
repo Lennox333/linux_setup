@@ -11,7 +11,7 @@ import {
 } from "./src/widgets/notifications";
 import OSD from "./src/widgets/osd";
 import QuickSettings from "./src/widgets/quick-settings";
-// import WallPicker from "./src/widgets/wall-picker";
+import WallPicker from "./src/widgets/wall-picker";
 
 const scss = "./src/style/style.scss";
 const css = "/tmp/ags/style.css";
@@ -56,6 +56,7 @@ App.start({
     App.get_monitors().map((monitor) => {
       Bar(monitor);
     });
+    WallPicker();
     Alert();
     NotificationCenter();
     NotificationPopups();

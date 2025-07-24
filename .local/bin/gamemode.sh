@@ -2,8 +2,7 @@
 # TODO: Add persistent mode
 HYPRGAMEMODE=$(hyprctl getoption animations:enabled | sed -n '1p' | awk '{print $2}')
 
-# Hyprland performance
-if [ "$HYPRGAMEMODE" = 1 ]; then
+enable() {
         hyprctl -q --batch "\
         keyword animations:enabled 0;\
         keyword decoration:shadow:enabled 0;\
@@ -24,8 +23,29 @@ if [ "$HYPRGAMEMODE" = 1 ]; then
         "
         hyprctl 'keyword windowrulev2 opaque,class:(.*)' # ensure all windows are opaque
         # powerprofilesctl set performance
-        exit
-else
+}
+
+disable() {
         hyprctl reload config-only -q
-        # powerprofilesctl set power-saver
-fi
+
+}
+
+case "$1" in 
+        on)
+                if [ "$HYPRGAMEMODE" = 1 ]; then
+                        enable
+                fi
+                ;;
+        off)    
+                if [ "$HYPRGAMEMODE" = 0 ]; then
+                        disable
+                fi  
+                ;;
+        *)      
+                if [ "$HYPRGAMEMODE" = 1 ]; then
+                        enable
+                else
+                        disable
+                fi
+                ;;
+esac

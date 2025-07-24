@@ -25,7 +25,7 @@
 </action>
 <action>
 	<icon></icon>
-	<name>Set as wall</name>
+	<name>Set as wallpaper</name>
 	<submenu></submenu>
 	<unique-id>1747662686548660-1</unique-id>
 	<command>wall.sh %f</command>

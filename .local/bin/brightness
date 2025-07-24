@@ -5,6 +5,14 @@ if [ "$1" = "off" ]; then
     ddcutil setvcp D6 04 --noverify
     exit 0
 fi
+
+
+if [ "$1" = "on" ]; then
+    # Custom command to turn off the monitor (example using xset)
+    ddcutil setvcp D6 01 --noverify
+    exit 0
+fi
+
 if [ "$1" = "toggle" ]; then
 
     CACHE_FILE="$HOME/.cache/monitor_toggle"

@@ -1,4 +1,5 @@
 import { GLib, Variable, bind, exec } from "astal";
+import { Box, LevelBar } from "astal/gtk4/widget";
 import icons from "~/lib/icons";
 import { bash } from "~/lib/utils";
 import { options } from "~/options";
@@ -80,15 +81,68 @@ const PowerProfile = () => {
   const displayMode = Variable("power-saver");
   const positionState = Variable("mid");
 
+  let movingTimeoutId = 0;
+  let modeTimeoutId = 0;
+
   bash(
+    //get system profile
     'powerprofilesctl | grep "*" | awk \'{gsub(":", "", $2); print $2}\''
   ).then((mode) => {
     displayMode.set(mode);
     currMode.set(mode);
   });
 
-  let movingTimeoutId = 0;
-  let modeTimeoutId = 0;
+  const animationTimeout = (mode: string) => {
+    if (movingTimeoutId !== 0) {
+      GLib.source_remove(movingTimeoutId);
+    }
+    movingTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
+      displayMode.set(mode);
+      positionState.set("right");
+
+      GLib.timeout_add(GLib.PRIORITY_DEFAULT, 250, () => {
+        positionState.set("mid");
+        return GLib.SOURCE_REMOVE;
+      });
+
+      movingTimeoutId = 0;
+      return GLib.SOURCE_REMOVE;
+    });
+    if (modeTimeoutId !== 0) {
+      // cancel the previous timeout if still running
+      GLib.source_remove(modeTimeoutId);
+      modeTimeoutId = 0;
+    }
+  };
+
+  // delay actual system mode update
+  const modeTimeout = (mode: string) => {
+    modeTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 3000, () => {
+      if (displayMode.get() === currMode.get()) {
+        // do nothing if displayed icon is the same as previous mode
+        modeTimeoutId = 0;
+        return GLib.SOURCE_REMOVE;
+      }
+
+      currMode.set(displayMode.get()); // set the *latest* mode
+
+      bash(`powerprofilesctl set ${mode}`)
+        .then((e) => {
+          // console.log(e)
+          bash(`notify-send "${mode}"`);
+          if (mode === "balanced") {
+            bash("hyprctl reload config-only -q");
+          } else bash("gamemode.sh on");
+        })
+        .catch((err) => {
+          print(`Error setting profile: ${err}`);
+          bash(`notify-send "Power Profile Error" "${err}"`);
+        });
+
+      modeTimeoutId = 0;
+      return GLib.SOURCE_REMOVE;
+    });
+  };
 
   const handleClick = () => {
     if (positionState.get() !== "mid") return; //only switch when previous is mid, avoiding glitch
@@ -97,45 +151,9 @@ const PowerProfile = () => {
     const next = MODES[(MODES.indexOf(display) + 1) % MODES.length];
 
     positionState.set("left");
-    if (movingTimeoutId !== 0) {
-      GLib.source_remove(movingTimeoutId);
-    }
-    movingTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 380, () => {
-      displayMode.set(next);
-      positionState.set("right");
 
-      GLib.timeout_add(GLib.PRIORITY_DEFAULT, 380, () => {
-        positionState.set("mid");
-        return GLib.SOURCE_REMOVE;
-      });
-
-      movingTimeoutId = 0;
-      return GLib.SOURCE_REMOVE;
-    });
-
-    // cancel the previous timeout if still running
-    if (modeTimeoutId !== 0) {
-      GLib.source_remove(modeTimeoutId);
-      modeTimeoutId = 0;
-    }
-    // delay actual system mode update
-    modeTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 3000, () => {
-      currMode.set(displayMode.get()); // set the *latest* mode
-      bash(`powerprofilesctl set ${next}`)
-        .then(() => {
-          bash(`notify-send "${next}"`);
-          if (next === "balanced" ) {
-            bash("hyprctl reload config-only -q");
-          } else bash("gamemode.sh");
-        })
-        .catch((err) => {
-          print(`Error setting profile: ${err}`);
-          bash(`notify-send "Power Profile Error" "${err}"`);
-        });
-  
-      modeTimeoutId = 0;
-      return GLib.SOURCE_REMOVE;
-    });
+    animationTimeout(next);
+    modeTimeout(next);
   };
 
   return (
@@ -165,6 +183,39 @@ const PowerProfile = () => {
   );
 };
 
+const BrightnessBar = () => {
+  const currVal = Variable(10);
+  const labelText = Variable("󰖨");
+  let timeoutId = null;
+  const handleScroll = (_, { delta_y }) => {
+    // console.log(delta_y);
+    const newVal = currVal.get() + (delta_y > 0 ? -5 : 5);
+    currVal.set(Math.max(0, Math.min(100, newVal)));
+    // console.log(currVal.get());
+    labelText.set(`${currVal.get()}`);
+
+    if (timeoutId !== null) {
+      GLib.source_remove(timeoutId);
+    }
+    // Set timeout to revert after 3 seconds (3000 ms)
+    timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
+      bash(`brightness b ${currVal.get()}`);
+      labelText.set("󰖨"); // restore logo
+      timeoutId = null;
+      return GLib.SOURCE_REMOVE; // remove the timeout
+    });
+  };
+
+  return (
+    <box spacing={3} vertical className="brightness">
+      <button onScroll={handleScroll} label={bind(labelText)}>
+        {/* <label  /> */}
+      </button>
+      <levelbar max_value={100} value={bind(currVal)} />
+    </box>
+  );
+};
+
 export default function Profile() {
   return (
     <box className="profile" spacing={10}>
@@ -179,6 +230,7 @@ export default function Profile() {
         <ExtraButtons />
         <DayProgress />
         <PowerProfile />
+        <BrightnessBar />
       </box>
     </box>
   );

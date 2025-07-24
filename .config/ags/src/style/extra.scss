@@ -12,20 +12,20 @@ window.popup {
     color: transparentize($color1, 0.8);
     border: 5px solid transparentize($color1, 0.9);;
     border-color: $color3;
-    // border-radius: $border-radius;
+    border-radius: $border-radius;
 
     separator {
       background-color: $color2;
     }
 
     menuitem {
+      
       color: $color13;
       margin-bottom: 4px;
       padding: 8px 6px;
-      padding-left: 0;
-
+      padding-left: 0px;
       &:hover {
-        color: $color14;
+        color: $color16;
         background-color : transparentize($color1, 0.3);;
       }
 

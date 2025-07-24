@@ -67,7 +67,7 @@
 window#notifications {
   all: unset;
   background-color: transparent;
-  font-size: 14px;
+  // font-size: 14px;
   
   .notifications {
     margin: 4.8px;
@@ -172,6 +172,6 @@ window#notifications {
 .actions-container {
   button {
   &:hover {
-    background-color: $color14;
+    background-color: $color16;
   }
 }}

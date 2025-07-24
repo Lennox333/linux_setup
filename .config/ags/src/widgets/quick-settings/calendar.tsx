@@ -54,7 +54,7 @@ export default function Calendar() {
       <DateWidget />
       <box className="container" css="padding: 0px 4px;">
         <C hexpand />
-      </box>
+      </box> 
     </box>
   );
 }
