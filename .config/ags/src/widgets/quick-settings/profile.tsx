@@ -199,7 +199,7 @@ const BrightnessBar = () => {
     }
     // Set timeout to revert after 3 seconds (3000 ms)
     timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 500, () => {
-      bash(`brightness b ${currVal.get()}`);
+      bash(`brightness b ${currVal.get()} && brightnessctl s  ${currVal.get()}%`);
       labelText.set("󰖨"); // restore logo
       timeoutId = null;
       return GLib.SOURCE_REMOVE; // remove the timeout

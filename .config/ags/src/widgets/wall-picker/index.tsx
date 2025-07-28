@@ -134,15 +134,15 @@ const Footer = () => {
   );
 };
 
-const custompath = "/home/ln607/Wallpapers/test/";
-const wallpaperss = Variable(
-  exec(
-    `find -L "${custompath}" -iname "*.thumb"
-`
-  )
-    .split("\n")
-    .filter((i) => i !== "")
-);
+// const custompath = "/home/ln607/Wallpapers/test/";
+// const wallpaperss = Variable(
+//   exec(
+//     `find -L "${custompath}" -iname "*.thumb"
+// `
+//   )
+//     .split("\n")
+//     .filter((i) => i !== "")
+// );
 
 export default function WallPicker() {
   const { TOP, RIGHT, LEFT, BOTTOM } = Astal.WindowAnchor;
