@@ -126,6 +126,6 @@ source $ZSH/oh-my-zsh.sh
 
 alias v='nvim'
 alias su='sudo'
-alias suv='sudo nvim'
+alias suv='sudo -E nvim'
 alias ff='random_fastfetch.sh'
-
+export TERMINAL=kitty

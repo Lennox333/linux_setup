@@ -5,15 +5,16 @@ ROFI_DIR="$HOME/.config/rofi/launchers"
 # -theme "${ROFI_DIR}/type-6/style-4.rasi"
 # | cliphist decode | wl-copy
 
-
 # Add a wipe option to the list
 selected=$(echo -e "Wipe\n$(cliphist list)" | rofi -dmenu -theme "${ROFI_DIR}/type-6/style-4.rasi")
 
 # If "Wipe Clipboard History" is selected, clear the clipboard history
 if [ "$selected" == "Wipe" ]; then
-    cliphist wipe
-    notify-send "Clipboard history wiped."
+  cliphist wipe
+  rm ~/.cache/cliphist/db
+  notify-send "Clipboard history wiped."
 elif [ -n "$selected" ]; then
-    # If something is selected from the history, decode and copy it to clipboard
-    cliphist decode <<< "$selected" | wl-copy
+  # If something is selected from the history, decode and copy it to clipboard
+  cliphist decode <<<"$selected" | wl-copy
 fi
+

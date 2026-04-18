@@ -1,4 +1,4 @@
-import { bind } from "astal";
+import { bind, Variable } from "astal";
 import { cpuUsage } from "~/src/globals/cpu";
 import { memUsage } from "~/src/globals/mem";
 
@@ -28,4 +28,14 @@ const Mem = () => {
   );
 };
 
+// const batteryIndi = Variable() 
+// const Battery = () => {
+//   return (
+//     <box className="battery" >
+//    <label className="value"
+//       label={bind(batteryIndi).as((v) => `${v}`)}
+//     />
+//     </box>
+//   )
+// }
 export { CPU, Mem };

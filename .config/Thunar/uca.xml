@@ -25,21 +25,10 @@
 </action>
 <action>
 	<icon></icon>
-	<name>Set as wallpaper</name>
-	<submenu></submenu>
-	<unique-id>1747662686548660-1</unique-id>
-	<command>wall.sh %f</command>
-	<description></description>
-	<range>*</range>
-	<patterns>*.jpg;*.png;*.jpeg</patterns>
-	<image-files/>
-</action>
-<action>
-	<icon></icon>
 	<name>Zip files</name>
 	<submenu></submenu>
 	<unique-id>1748085094398375-1</unique-id>
-	<command>7z a -tzip %F</command>
+	<command></command>
 	<description></description>
 	<range>*</range>
 	<patterns>*</patterns>

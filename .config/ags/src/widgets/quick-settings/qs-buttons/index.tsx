@@ -23,6 +23,7 @@ const ToggleDarkMode = () => {
 
   const applyKelvin = (percent: number) => {
     const kelvin = kelvinFromPercent(percent);
+
     bash(`hyprctl hyprsunset temperature ${kelvin}`).then(() =>
       nightLight.set("blue-light-filter")
     );
@@ -79,7 +80,7 @@ const ScreenRecord = () => {
   );
 
   const recordHandler = () => {
-    const cmd = `wf-recorder --audio --file="${recording_path}/${format.get()}"`;
+    const cmd = `wf-recorder --audio=$(pactl get-default-sink).monitor --file="${recording_path}/${format.get()}"`;
 
     if (!isRecording.get()) {
       isRecording.set(true);

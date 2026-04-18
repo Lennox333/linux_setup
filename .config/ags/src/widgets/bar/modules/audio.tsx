@@ -14,8 +14,9 @@ export default function Audio() {
         speaker.set_mute(!speaker.mute);
       }}
       onScroll={(_, event) => {
-        const volumeStep = 0.05;
-        const direction = event.delta_y > 0 ? 1 : -1;
+        const volumeStep = 0.02;
+        const direction = event.delta_y > 0 ? 0.9995 : -1
+        ;
 
         let newVolume = speaker.volume - direction * volumeStep;
 

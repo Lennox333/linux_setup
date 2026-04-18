@@ -1,7 +1,7 @@
 #!/bin/bash
 
 outdir="$HOME/Wallpapers/Wall-Dcol"
-
+INPUT="$1"
 if [[ ! -d "$outdir" ]]; then
   mkdir -p "$outdir"
   echo "Created directory: $outdir"
@@ -23,7 +23,24 @@ if [[ ! -x "$(command -v wallbash.sh)" || ! -x "$(command -v wall_dcol_replace.s
   exit 1
 fi
 
-swww img "$1" --transition-type center >/dev/null 2>&1 &
+if [[ "$1" =~ ^[0-9]+$ ]]; then
+  # Kill previous instance
+  pkill -x linux-wallpaperengine 2>/dev/null
+
+  linux-wallpaperengine \
+    --volume 50 \
+    --screen-root HDMI-A-1 \
+    --clamp border \
+    --fullscreen-pause-only-active \
+    --hwdec=auto \
+    --fps 60 \
+    --bg "$INPUT" \
+    >/dev/null 2>&1 &
+
+else
+  # Otherwise treat as normal image
+  awww img "$INPUT" --transition-type center #>/dev/null 2>&1 &
+fi
 
 wallbash.sh -v -dir "$outdir" -i "$1" &&
   wall_dcol_replace.sh -f "$dcol" \
