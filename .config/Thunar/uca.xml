@@ -39,4 +39,15 @@
 	<text-files/>
 	<video-files/>
 </action>
+<action>
+	<icon></icon>
+	<name>set as wall</name>
+	<submenu></submenu>
+	<unique-id>1776517160377235-1</unique-id>
+	<command>wall.sh %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
 </actions>
