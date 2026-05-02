@@ -5,7 +5,7 @@
 !.local/
 !.bashrc
 !.zshrc
-
+!.p10k.zsh
 # .local/**
 # .config/**
 
