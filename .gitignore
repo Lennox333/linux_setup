@@ -47,6 +47,7 @@
 !.config/wireplumber/**
 !.config/pipewire/**
 !.config/ags/**
+!.config/rofi/**
 
 Wallpapers/Wall-Dcol/
 Wallpapers/Wall-Dcol/**
