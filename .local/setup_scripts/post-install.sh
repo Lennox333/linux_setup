@@ -14,3 +14,7 @@ echo "env QT_QPA_PLATFORM=xcb pentablet.desktop if you wanna run it"
 
 xdg-mime default thunar.desktop inode/directory
 
+sed -i \
+  -e 's|^TryExec=.*|TryExec=launch_nvim.sh|' \
+  -e 's|^Exec=.*|Exec=launch_nvim.sh %F|' \
+  ~/.local/share/applications/nvim.desktop
