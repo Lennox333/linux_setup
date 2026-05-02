@@ -9,6 +9,11 @@
 # .local/**
 # .config/**
 
+!.local/share
+!.local/share/themes
+!.local/share/themes/**
+!.local/share/icons
+!.local/share/icons/**
 
 !Wallpapers/
 !.local/bin/
