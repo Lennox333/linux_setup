@@ -1,0 +1,56 @@
+/**
+# dont ignore folder
+!.gitignore
+!.config/
+!.local/
+!.bashrc
+!.zshrc
+
+# .local/**
+# .config/**
+
+
+!Wallpapers/
+!.local/bin/
+!.local/lib
+!.local/lib/hyde
+!.local/setup_scripts
+
+!.config/Thunar
+!.config/wal
+!.config/MangoHud
+!.config/hypr
+!.config/kitty
+!.config/cava
+!.config/fastfetch
+!.config/nvim
+!.config/wireplumber
+!.config/pipewire
+!.config/rofi
+!.config/ags
+
+# dont ignore their content
+
+!Wallpapers/**
+!.local/bin/**
+!.local/lib/hyde/**
+!.local/setup_scripts/**
+
+!.config/nvim/**
+!.config/kitty/**
+!.config/hypr/**
+!.config/cava/**
+!.config/wal/**
+!.config/fastfetch/**
+!.config/MangoHud/**
+!.config/Thunar/**
+!.config/wireplumber/**
+!.config/pipewire/**
+!.config/ags/**
+
+Wallpapers/Wall-Dcol/
+Wallpapers/Wall-Dcol/**
+.config/hypr/themes
+**/accels.scm
+# select some folder in config
+
