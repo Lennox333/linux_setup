@@ -6,6 +6,7 @@
 !.bashrc
 !.zshrc
 !.p10k.zsh
+
 # .local/**
 # .config/**
 
@@ -22,6 +23,9 @@
 !.local/setup_scripts
 
 !.config/Thunar
+!.config/foot
+!.config/foot/**
+
 !.config/wal
 !.config/MangoHud
 !.config/hypr
