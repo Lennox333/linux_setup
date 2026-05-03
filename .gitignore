@@ -66,6 +66,4 @@ Wallpapers/Wall-Dcol/**
 
 .local/setup_scripts/assets/**
 .config/nvim/lazy-lock.json
-.config/ags/src/style/colors.scss
 .config/nvim/lazyvim.json
-.config/hypr/themes/colors.conf
