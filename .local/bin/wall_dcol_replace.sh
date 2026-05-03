@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -x 
+# set -x
 while [[ $# -gt 0 ]]; do
   case "$1" in
   -t)
@@ -45,10 +45,10 @@ for i in "${!dcol_keys[@]}"; do
   # else
 
   if [[ "$dcol_var" == *_rgba ]]; then
-  
+
     rgb_part=$(sed -E 's/rgba\(([0-9]+,[0-9]+,[0-9]+),.*/\1/' <<<"$color_value")
 
-  # echo "sed -i -E \"s|^(\s*${target_key}:\s*rgba\()[0-9]+,[0-9]+,[0-9]+(,[0-9.]+\);)|\\1${rgb_part}\\2|\" \"$TARGET_FILE\""
+    # echo "sed -i -E \"s|^(\s*${target_key}:\s*rgba\()[0-9]+,[0-9]+,[0-9]+(,[0-9.]+\);)|\\1${rgb_part}\\2|\" \"$TARGET_FILE\""
     sed -i -E "s|(${target_key}:\s*rgba\().*(,)|\1${rgb_part}\2|" "$TARGET_FILE"
   else
     color_hex="#$color_value"
@@ -57,6 +57,6 @@ for i in "${!dcol_keys[@]}"; do
     escaped_key=$(printf '%s\n' "$target_key" | sed -E 's/[][(){}.^$*+?|]/\\&/g')
 
     # Use sed to replace the value (assuming format: key: #XXXXXX;)
-    sed -i -E "s|^(\s*${escaped_key}\s*=\s*['\"])#[0-9A-Fa-f]{6}(['\"])|\1${color_hex}\2|" "$TARGET_FILE"
+    sed -i -E "s|^(\s*${escaped_key}\s*=\s*['\"])#[0-9A-Fa-f]*(['\"])|\1${color_hex}\2|" "$TARGET_FILE"
   fi
 done
