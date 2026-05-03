@@ -18,3 +18,10 @@ sed -i \
   -e 's|^TryExec=.*|TryExec=launch_nvim.sh|' \
   -e 's|^Exec=.*|Exec=launch_nvim.sh %F|' \
   ~/.local/share/applications/nvim.desktop
+
+cat >~/.local/bin/xdg-terminal-exec <<'EOF'
+#!/bin/sh
+exec kitty "$@"
+EOF
+
+chmod +x ~/.local/bin/xdg-terminal-exec

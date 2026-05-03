@@ -66,3 +66,5 @@ Wallpapers/Wall-Dcol/**
 **/accels.scm
 # select some folder in config
 
+.config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json
