@@ -1,5 +1,7 @@
 /**
+
 # dont ignore folder
+!.gitattributes
 !.gitignore
 !.config/
 !.local/
@@ -64,4 +66,3 @@ Wallpapers/Wall-Dcol/**
 **/accels.scm
 # select some folder in config
 
-.local/setup_scripts/assets/**
