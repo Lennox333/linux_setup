@@ -32,4 +32,6 @@ EOF
 
 chmod +x ~/.local/bin/xdg-terminal-exec
 
+git update-index --skip-worktree .config/hypr/themes/colors.conf
+
 sudo timedatectl set-local-rtc 1
