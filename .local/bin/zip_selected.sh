@@ -3,6 +3,21 @@
 # $1 is the target zip name (optional)
 # All other arguments are files to include
 
+# Show help if requested
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  echo "Usage: zip_selected [output.zip] file1 [file2 ...]"
+  echo ""
+  echo "Create a ZIP archive from selected files using 7z."
+  echo ""
+  echo "Arguments:"
+  echo "  output.zip    Optional custom archive name (default: derived from first file)"
+  echo "  file1 ...     Files to include in the archive"
+  echo ""
+  echo "Options:"
+  echo "  -h, --help    Show this help message"
+  exit 0
+fi
+
 # If no arguments, exit
 if [ $# -eq 0 ]; then
   echo "No files provided."

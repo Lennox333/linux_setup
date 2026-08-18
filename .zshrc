@@ -118,7 +118,7 @@ plugins=(git)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-
+export PATH="$HOME/.pyenv/bin:$PATH"
 source $ZSH/oh-my-zsh.sh
 
 
